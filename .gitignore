@@ -13,3 +13,19 @@ logs/
 __pycache__/
 *.pth
 *.zip
+
+# Task 16 Heavy libs
+Task_16/mmdetection3d/
+Task_16/mmcv/
+Task_16/checkpoints/
+Task_16/outputs/
+Task_16/__pycache__/
+Task_16/*.bin
+
+# Task 16 Heavy libs
+Task_16/mmdetection3d/
+Task_16/mmcv/
+Task_16/checkpoints/
+Task_16/outputs/
+Task_16/__pycache__/
+Task_16/*.bin
