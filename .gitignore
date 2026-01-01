@@ -22,13 +22,12 @@ Task_16/outputs/
 Task_16/__pycache__/
 Task_16/*.bin
 
-# Task 16 Heavy libs
-Task_16/mmdetection3d/
-Task_16/mmcv/
-Task_16/checkpoints/
-Task_16/outputs/
-Task_16/__pycache__/
-Task_16/*.bin
+# Task 20
 Task_20/data/
 Task_20/logs/
 Task_20/*.npy
+
+# Task 24 (New)
+tiny_nerf_data.npz
+Task_24/colmap_workspace/
+Task_24/images/
