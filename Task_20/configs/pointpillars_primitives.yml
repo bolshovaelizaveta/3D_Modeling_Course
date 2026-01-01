@@ -1,0 +1,87 @@
+dataset:
+  name: ScannetPrimitivesDet
+  dataset_path: data/scannet_primitives
+  cache_dir: ./logs/cache
+  steps_per_epoch_train: 100
+
+model:
+  name: PointPillars
+  ckpt_path: 
+  batcher: ignore
+  
+  point_cloud_range: [-3, -3, -1, 3, 3, 1]
+  
+  classes: ['box', 'sphere', 'cylinder', 'torus', 'cone']
+
+  loss:
+    focal:
+      gamma: 2.0
+      alpha: 0.25
+      loss_weight: 1.0
+    smooth_l1:
+      beta: 0.11
+      loss_weight: 2.0
+    cross_entropy:
+      loss_weight: 0.2
+
+  voxelize:
+    max_num_points: 32 
+    voxel_size: [0.16, 0.16, 2] 
+    max_voxels: [10000, 10000] 
+
+  voxel_encoder:
+    in_channels: 3 
+    feat_channels: [64]
+    voxel_size: [0.16, 0.16, 2]
+
+  scatter:
+    in_channels: 64
+    output_shape: [38, 38] 
+
+  backbone:
+    in_channels: 64
+    out_channels: [64, 128, 256]
+    layer_nums: [3, 5, 5]
+    layer_strides: [2, 2, 2]
+
+  neck:
+    in_channels: [64, 128, 256]
+    out_channels: [128, 128, 128]
+    upsample_strides: [1, 2, 4]
+    use_conv_for_no_stride: false
+
+  head:
+    in_channels: 384
+    feat_channels: 384
+    nms_pre: 100
+    score_thr: 0.3
+    ranges:
+      - [-3, -3, -1, 3, 3, 1] 
+    sizes: [[0.5, 0.5, 0.5]] 
+    rotations: [0, 1.57]
+    iou_thr: [[0.35, 0.5]]
+
+  augment:
+    PointShuffle: True
+    ObjectRangeFilter:
+      point_cloud_range: [-3, -3, -1, 3, 3, 1]
+
+pipeline:
+  name: ObjectDetection
+  batch_size: 2 # Маленький батч, у меня CPU
+  val_batch_size: 2
+  test_batch_size: 1
+  save_ckpt_freq: 5
+  max_epoch: 20 
+  main_log_dir: ./logs
+  train_sum_dir: ./logs/train_log
+  
+  optimizer:
+    lr: 0.001
+    betas: [0.95, 0.999]
+    weight_decay: 0.01
+
+  evaluation:
+    overlaps: [0.5]
+    similar_classes: {}
+    difficulties: [0]

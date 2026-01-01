@@ -29,3 +29,6 @@ Task_16/checkpoints/
 Task_16/outputs/
 Task_16/__pycache__/
 Task_16/*.bin
+Task_20/data/
+Task_20/logs/
+Task_20/*.npy
