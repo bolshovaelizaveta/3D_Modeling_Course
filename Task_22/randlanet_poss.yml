@@ -1,0 +1,59 @@
+dataset:
+  cache_dir: ./logs/cache_poss
+  class_weights:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  dataset_path: /Users/bolshova/project/3D_Modeling_Course/Task_22
+  name: POSS
+  sampler:
+    name: SemSegRandomSampler
+  use_cache: true
+model:
+  batcher: DefaultBatcher
+  dim_features: 8
+  dim_output:
+  - 16
+  - 64
+  - 128
+  - 256
+  grid_size: 0.06
+  ignored_label_inds:
+  - 0
+  in_channels: 3
+  name: RandLANet
+  num_classes: 17
+  num_layers: 4
+  num_neighbors: 16
+  num_points: 45056
+  sub_sampling_ratio:
+  - 4
+  - 4
+  - 4
+  - 4
+pipeline:
+  batch_size: 2
+  main_log_dir: ./logs
+  max_epoch: 10
+  name: SemanticSegmentation
+  num_workers: 0
+  optimizer:
+    lr: 0.01
+  save_ckpt_freq: 1
+  scheduler_gamma: 0.9886
+  test_batch_size: 1
+  val_batch_size: 1
