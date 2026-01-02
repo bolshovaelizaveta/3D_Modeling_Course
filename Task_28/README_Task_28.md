@@ -1,4 +1,4 @@
-# Task_24: 3D Reconstruction using Neural Radiance Fields (NeRF)
+# Task_28: 3D Reconstruction using Neural Radiance Fields (NeRF)
 
 **Выполнила:** Большова Елизавета Александровна
 
