@@ -1,5 +1,3 @@
-# 3D Modeling Course | TSU Master's Program | Computer Vision
-
 # Домашние задания по курсу "Трехмерные модели"
 
 **Выполнила:** Большова Елизавета Александровна
