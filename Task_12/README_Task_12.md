@@ -38,6 +38,22 @@
 | **Звезда** | **Alpha Shapes** | Хорошо (слои) | Плохо (вогнутость) | `thresh=0.08` для RANSAC (поглощение шума). Patches создают артефакты на вогнутых формах. |
 | **Снеговик** | — | Артефакты (срезы) | **Корректный отказ** | `variance=5°`, `outlier=0.05`. Строгие настройки заставляют алгоритм игнорировать сферы. |
 
+## Примеры визуализации
+
+### 1. Исходная сцена (с шумом)
+![Source Scene](results/SourceScene.png)
+
+### 2. Кластеризация DBSCAN (Разделение объектов)
+![DBSCAN Clustering](results/Scene_Clustering_DBSCAN.png)
+
+### 3. DBSCAN + Convex Hulls 
+![DBSCAN Hulls](results/Scene_DBSCAN+Huuls.png)
+
+![DBSCAN Hulls Detailed](results/DBSCAN%20+%20Convex%20Huuls.png)
+
+---
+**Остальные результаты визуализации доступны в папке `Task_12/results`.**
+
 ## Технические особенности реализации
 
 1.  **Архитектура ARM64 (Apple Silicon):** В связи с ограничениями графического стека Open3D на macOS, пайплайн визуализации полностью переписан на библиотеку **Plotly**.
